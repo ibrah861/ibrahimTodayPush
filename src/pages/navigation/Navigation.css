@@ -1,0 +1,104 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    padding: 0.6rem 3rem;
+    background: black;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.main {
+    margin-top: 4.8rem;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    column-gap: 1.2rem;
+}
+
+.nav-list li {
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    
+}
+
+.nav-list a {
+    color: white;
+   text-decoration: none
+}
+
+.bg-blue {
+    background: blue;
+}
+
+.bg-boader {
+    box-shadow: 0px 0px 5px whitesmoke;
+}
+
+.button {
+    padding: 0.4rem 1rem;
+    border: none;
+    outline: none;
+    color: white;
+    box-shadow: none;
+    background: rgb(247, 2, 2);
+}
+input {
+    border: 1px solid green;
+    border-radius: 6px;
+}
+
+input:focus {
+    outline: 1px solid blue;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem
+}
+
+.logo-container ul {
+    list-style-type: none;
+}
+
+
+
+.siteLogo {
+    width: 100px;
+    height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+.break-none > a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/*  MEDIA QUERY */
+@media (width < 600px) {
+    .nav {
+        padding: 0.6rem 1rem;
+        ;
+    }
+
+    .home, .account {
+        display: none;
+    }
+
+    .bg-boader {
+        display: block;
+    }
+}

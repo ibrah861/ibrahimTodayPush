@@ -1,0 +1,118 @@
+.hero-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: " content content content content content content content content  form form form form";
+    background-image: url("../assets/icon/images.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 86dvh;
+}
+
+
+.hero {
+    grid-area: content;
+    height: inherit;
+}
+
+.form-container-hero {
+    grid-area: form;
+}
+
+.form-container-hero h2 {
+    margin-top: 2rem;
+}
+
+.conteiner-choice {
+    display: flex;
+    justify-content: center;
+    column-gap: 0.4rem;
+    cursor: pointer;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.conteiner-choice ::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 19;
+
+}
+
+.conteiner-choice > p{
+    padding: 0.3rem 0.7rem;
+    color: white;
+}
+
+.conteiner-choice :nth-child(1), .conteiner-choice :nth-child(2) {
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    transition-delay: 1ms;
+}
+
+.conteiner-choice :nth-child(1) {
+    background: grey;
+}
+
+.conteiner-choice :nth-child(1):hover {
+    border-radius: 9px;
+}
+
+.conteiner-choice :nth-child(2) {
+    box-shadow: 0px 0px 2px white;
+}
+
+.conteiner-choice :nth-child(2):hover {
+    background: blue;
+    box-shadow: none;
+    border-radius: 9px;
+}
+
+.flex-head {
+   display: flex;
+   flex-direction: column;
+   height: inherit;
+   justify-content: center;
+   align-items: center;
+   color: white;
+}
+
+.flex-head h1 {
+    font-size: 3.9rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.heigth-flex {
+    width: 80%;
+}
+
+.heigth-flex > p {
+    line-height: 1.8rem;
+}
+
+
+
+
+@media (width < 600px) {
+    .hero-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.heigth-flex h1{
+    font-size: 2.0rem;
+    margin-top: 1rem;
+    padding: 0;
+    line-height: 2.8rem;
+    color: black;
+    text-shadow: 0px 0px 1px white;
+}
+
+ 
+body {
+    width: 100%;
+}
+}

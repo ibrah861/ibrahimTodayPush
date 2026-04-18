@@ -1,0 +1,127 @@
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.5rem;
+    margin-top: 1rem;
+   
+}
+
+.submit button {
+    background: red;
+    border: none;
+    color: white;
+    width: 12rem;
+    padding: 0.1rem 1rem;
+    border-radius: 0.4rem;
+}
+
+
+.flex-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* BOX MESSAGE */
+
+.messageBox {
+    box-shadow: 0px 0px 3px black ;
+    background: white;
+    width: 10rem;
+    padding: 0.2rem  0 0  0;
+    font-family: sans-serif;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: -2rem;
+    z-index: 7;
+}
+
+.message {
+    margin-top: 0.9rem;
+    padding: 0.8rem 0.7rem ;
+     font-size: small;
+}
+
+.msg-head {
+    font-weight: 800;
+    color: black;
+    padding-left: 0.7rem;
+}
+
+/* COLOR */
+.green {
+    background: green;
+}
+
+.orangered {
+    background: orangered;
+}
+
+
+/* FORM */
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.9rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    padding: 0.6rem;
+    border-radius: 8px;
+    width: fit-content;
+    background: inherit;
+    color: white;
+    box-shadow: 0px 0px 2px white;
+}
+
+.container h2 {
+    margin: 0.7rem;
+    text-align: center;
+    font-size: 2.0rem;
+}
+
+form {
+    width: inherit;
+}
+
+form > div {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+form > div > input{
+    padding: 0.5rem 0.6rem;
+}
+
+form > div > label {
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+form > div > label,input {
+    width: 20rem;
+}
+
+form > div  {
+    position: relative;
+}
+
+.psw-rechange {
+    position: absolute;
+    right: 0;
+    bottom: -1.5rem;
+    cursor: pointer;
+}
+
+.no-acccount {
+    font-size: small;
+    text-align: right;
+    margin-top: 1.8rem;
+}

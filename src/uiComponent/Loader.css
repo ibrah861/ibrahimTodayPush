@@ -1,0 +1,29 @@
+.loader {
+  width: 30px;
+  height: 30px;
+  transition: ease-in-out;
+  border-radius: 50px;
+  border: 3px solid rgba(0, 0, 255, 0.999);
+  border-left-color: transparent;
+  animation: loader 600ms linear 1000ms infinite ;
+  animation-fill-mode: both;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80dvh;
+
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

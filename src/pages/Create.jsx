@@ -1,0 +1,103 @@
+import { useState } from "react";
+import auth from "../utility/axios/AxiosApi";
+import { Link, useNavigate } from "react-router-dom";
+
+const Create = () => {
+  // state
+  const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const [content, setContent] = useState("");
+  const [Image, setImgUrl] = useState(null);
+  const [blogcreated, setbBogCreated] = useState(false);
+  const [create, setCreate] = useState(false);
+
+  const navigate = useNavigate();
+
+  const createPost = async (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem("token");
+    setCreate(true);
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("subtitle", subtitle);
+      formData.append("content", content);
+      formData.append("Image", Image);
+
+      const submitPost = await auth.post("/post", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setbBogCreated(submitPost.data.isblogCreated);
+
+      //  reset to  empty filed
+      setTitle("");
+      setContent("");
+      setSubtitle("");
+      setImgUrl("");
+      // ---- end of reset
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setCreate(false);
+      navigate("/view/:id");
+    }
+  };
+
+  return (
+    <>
+      <div className="create">
+        {blogcreated && (
+          <div className="created">
+            <h4>Post created success</h4>
+            <p>
+              Would you like to view it ? <Link to="/view/:id">view</Link>
+            </p>
+          </div>
+        )}
+        <h1>Create blog</h1>
+        <div className="input">
+          <form onSubmit={createPost} encType="">
+            <input
+              type="text"
+              required
+              placeholder="Title"
+              onChange={(e) => setTitle(e.target.value.trim())}
+            />
+            <input
+              type="text"
+              required
+              placeholder="Sub-title"
+              onChange={(e) => setSubtitle(e.target.value.trim().toUpperCase())}
+            />
+
+            <textarea
+              name=""
+              id=""
+              required
+              placeholder="Contents"
+              onChange={(e) => setContent(e.target.value.trim())}
+            ></textarea>
+            <input
+              type="file"
+              accept="image/*"
+              required
+              className="file-input"
+              onChange={(e) => setImgUrl(e.target.files[0])}
+            />
+            <div>
+              <button className="submit">
+                {create ? "Creating..." : "Submit"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Create;
