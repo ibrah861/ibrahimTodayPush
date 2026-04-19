@@ -4,7 +4,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import View from "./pages/View";
 import Create from "./pages/Create";
-import Navigation from "./pages/Navigation/Navigation";
+import Navigation from "./pages/navigation/Navigation";
 import AdminDashBoard from "./pages/AdminDashBoard";
 import Protected from "./pages/protectedRoutes/Protected";
 
