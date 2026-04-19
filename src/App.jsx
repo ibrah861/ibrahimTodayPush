@@ -6,7 +6,7 @@ import View from "./pages/View";
 import Create from "./pages/Create";
 import Navigation from "./pages/Navigation/Navigation";
 import AdminDashBoard from "./pages/AdminDashBoard";
-import { Index } from "./pages/protectedRoutes/Index";
+import Protected from "./pages/protectedRoutes/Protected";
 
 // CSS
 import "./pages/Home.css";
@@ -28,7 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          <Route element={<Index />}>
+          <Route element={<Protected />}>
             <Route path="/view/:id" element={<View />} />
             <Route path="/create" element={<Create />} />
             <Route path="/admin/:id" element={<AdminDashBoard />} />

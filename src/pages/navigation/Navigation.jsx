@@ -1,21 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import auth from "../../utility/axios/AxiosApi";
 import { maneger } from "../../utility/authContext/Context";
 
 // import img
 import siteLogo from "../../assets/icon/siteLogo.png";
 
 const Navigation = () => {
+  const [auth, setAuth] = useState(true);
   const navigate = useNavigate();
   const { setLogout } = useContext(maneger);
 
   // logout function
   const logOut = () => {
-    localStorage.setItem("token", null);
+    localStorage.setItem("token", "");
     const isAuther = localStorage.getItem("token");
-    if (isAuther !== null) {
+    if (isAuther === "") {
       navigate("/");
+      setAuth(false);
     }
   };
 
@@ -35,9 +36,12 @@ const Navigation = () => {
           <Link>
             <li className="account">Account</li>
           </Link>
-          <button onClick={logOut} className="bg-boader button">
-            Logout
-          </button>
+
+          {auth && (
+            <button onClick={logOut} className="bg-boader button">
+              Logout
+            </button>
+          )}
         </ul>
       </div>
     </>
