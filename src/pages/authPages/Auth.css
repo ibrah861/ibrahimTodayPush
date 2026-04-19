@@ -8,9 +8,9 @@
 }
 
 .submit button {
-    background: red;
-    border: none;
     color: white;
+    background: transparent;
+    border: none;
     width: 12rem;
     padding: 0.1rem 1rem;
     border-radius: 0.4rem;
