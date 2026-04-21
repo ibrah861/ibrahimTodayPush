@@ -45,6 +45,8 @@
      font-size: small;
 }
 
+
+
 .msg-head {
     font-weight: 800;
     color: black;
@@ -59,6 +61,8 @@
 .orangered {
     background: orangered;
 }
+
+
 
 
 /* FORM */
@@ -84,7 +88,8 @@
 .container h2 {
     margin: 0.7rem;
     text-align: center;
-    font-size: 2.0rem;
+    font-weight: 200;
+    color: black;
 }
 
 form {
@@ -124,4 +129,10 @@ form > div  {
     font-size: small;
     text-align: right;
     margin-top: 1.8rem;
+}
+
+@media(width < 600px) {
+    .container h2 {
+        font-size: 1.4rem;
+    }
 }
