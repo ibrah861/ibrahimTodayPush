@@ -44,10 +44,24 @@
    
 }
 
-.menu-ul ul li:hover{
+.menu-ul ul a {
+ color: white;
+}
+
+.menu-ul ul  a li:hover{
    color: black;
    background: white;
    
+}
+
+.close-nav-Menu{
+    position: relative;
+}
+
+.close-nav-Menu >  span {
+    position: absolute;
+    right: 0.7em;
+    font-size: 2.8em;
 }
 
 

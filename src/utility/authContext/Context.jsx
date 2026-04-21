@@ -1,12 +1,13 @@
 import { createContext, useState } from "react";
 
-export const maneger = createContext();
+export const stateManager = createContext();
 
 export const State = ({ children }) => {
-  const [logouter, setLogout] = useState(false);
+  const [menuNav, setMenuNav] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <maneger.Provider value={{ logouter, setLogout }}>
+    <stateManager.Provider value={{ menuNav, setMenuNav }}>
       {children}
-    </maneger.Provider>
+    </stateManager.Provider>
   );
 };

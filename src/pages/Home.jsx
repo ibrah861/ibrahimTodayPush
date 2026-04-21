@@ -240,7 +240,7 @@ const Home = () => {
                     </div>
 
                     <div className="flex-btn">
-                      <div className="submit">
+                      <div className="signin-user">
                         {isLoading && <Loader />}
                         <button title="Signin in user account">
                           {isLoading ? "Authenticating ..." : " Sign-in"}
@@ -307,7 +307,7 @@ const Home = () => {
                     </div>
 
                     <div className="flex-btn">
-                      <div className="submit">
+                      <div className="signin-user">
                         {isLoading && <Loader />}
                         <button>
                           {isLoading ? "Authenticating ..." : " Sign up"}

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import mark from "../assets/icon/mark.png";
 import Logout from "../uiComponent/Logout";
-import { maneger } from "../utility/authContext/Context";
+import { stateManager } from "../utility/authContext/Context";
 
 // import Axios api
 
@@ -25,7 +25,7 @@ const View = () => {
 
   // navigate
   const navigate = useNavigate();
-  const { logouter } = useContext(maneger);
+  const { isLoggedIn } = useContext(stateManager);
 
   const token = localStorage.getItem("token");
 
@@ -131,7 +131,7 @@ const View = () => {
         ) : (
           <div className="user">
             <>
-              {logouter ? <Logout /> : null}
+              {isLoggedIn ? <Logout /> : null}
               {userDetails ? (
                 <div className="message-box">
                   <h2>

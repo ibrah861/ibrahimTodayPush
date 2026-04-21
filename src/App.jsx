@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useContext } from "react";
 
 // ROUTES
 import Home from "./pages/Home";
@@ -8,6 +9,7 @@ import Navigation from "./pages/navigation/Navigation";
 import AdminDashBoard from "./pages/AdminDashBoard";
 import Protected from "./pages/protectedRoutes/Protected";
 import MenuNav from "./pages/navigation/MenuNav";
+import { stateManager } from "./utility/authContext/Context";
 
 // CSS
 import "./pages/Home.css";
@@ -22,9 +24,10 @@ import "./pages/navigation/Navigation.css";
 import "./uiComponent/LogOut.css";
 
 const App = () => {
+  const { menuNav } = useContext(stateManager);
   return (
     <>
-      <MenuNav />
+      {menuNav && <MenuNav />}
       <Navigation />
       <div className="main">
         <Routes>
