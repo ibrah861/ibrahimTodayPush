@@ -7,12 +7,14 @@ import Create from "./pages/Create";
 import Navigation from "./pages/navigation/Navigation";
 import AdminDashBoard from "./pages/AdminDashBoard";
 import Protected from "./pages/protectedRoutes/Protected";
+import MenuNav from "./pages/navigation/MenuNav";
 
 // CSS
 import "./pages/Home.css";
 import "./pages/View.css";
 import "./pages/Admin.css";
 import "./uiComponent/Loader.css";
+import "./pages/navigation/Menu.css";
 
 import "./pages/authPages/Auth.css";
 import "./pages/index.css";
@@ -22,8 +24,8 @@ import "./uiComponent/LogOut.css";
 const App = () => {
   return (
     <>
+      <MenuNav />
       <Navigation />
-
       <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />

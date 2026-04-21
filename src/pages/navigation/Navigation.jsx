@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { maneger } from "../../utility/authContext/Context";
+import Menu from "./Menu";
 
 // import img
 import siteLogo from "../../assets/icon/siteLogo.png";
@@ -8,7 +8,6 @@ import siteLogo from "../../assets/icon/siteLogo.png";
 const Navigation = () => {
   const [auth, setAuth] = useState(true);
   const navigate = useNavigate();
-  const { setLogout } = useContext(maneger);
 
   // logout function
   const logOut = () => {
@@ -43,6 +42,8 @@ const Navigation = () => {
             </button>
           )}
         </ul>
+
+        <Menu />
       </div>
     </>
   );

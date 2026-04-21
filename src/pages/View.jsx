@@ -156,7 +156,9 @@ const View = () => {
                     Would you like to create blog ?
                   </p>
                   <Link to="/create">
-                    <div className="submit">Create now</div>
+                    <div className="submit">
+                      <span>Create now</span>
+                    </div>
                   </Link>
                 </div>
               ) : (

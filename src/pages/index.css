@@ -22,6 +22,11 @@ img {
   width: 100%;
 }
 
+p {
+  font-weight: 300;
+  
+}
+
 button {
   letter-spacing: 0.1rem;
 }

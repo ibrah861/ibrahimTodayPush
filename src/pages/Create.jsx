@@ -1,6 +1,7 @@
 import { useState } from "react";
 import auth from "../utility/axios/AxiosApi";
 import { Link, useNavigate } from "react-router-dom";
+import Loader from "../uiComponent/Loader";
 
 const Create = () => {
   // state
@@ -88,9 +89,10 @@ const Create = () => {
               className="file-input"
               onChange={(e) => setImgUrl(e.target.files[0])}
             />
-            <div>
-              <button className="submit">
-                {create ? "Creating..." : "Submit"}
+            <div className="div-post">
+              {create ? <Loader /> : null}
+              <button className="submit-post">
+                {create ? "Creating post..." : "Create"}
               </button>
             </div>
           </form>

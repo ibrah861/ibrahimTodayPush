@@ -1,10 +1,10 @@
 .loader {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   transition: ease-in-out;
   border-radius: 50px;
-  border: 3px solid rgba(0, 0, 255, 0.999);
-  border-left-color: transparent;
+  border: 3px solid rgba(128, 128, 128, 0.534);
+  border-left-color: blue;
   animation: loader 600ms linear 1000ms infinite ;
   animation-fill-mode: both;
 }

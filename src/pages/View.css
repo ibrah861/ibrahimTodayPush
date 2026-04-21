@@ -13,10 +13,21 @@
     border-radius: 16px;
 }
 
+.create {
+    padding: 2rem 0.9rem;
+}
+
+.create h1 {
+    color: black;
+    font-weight: 300;
+    text-shadow: none;
+}
+
 
 .message-box h2 {
-    margin-bottom: 3.6rem;
-    font-size: 2.8rem;
+    margin-bottom: 2.2rem;
+    font-size: 2.0rem;
+    color: black;
 }
 
 .message-box a {
@@ -116,9 +127,31 @@
     padding: 0.2rem 0.8rem;
     border: none;
     width: 100%;
-    background: red;
+   
+}
+
+.submit span {
+    font-size: 1.0rem;
+    font-weight: 200;
+     background: red;
+     padding: 0.3em 1.9em;
+     color: white;
+     border-radius: 20px;
+}
+
+.div-post {
+    display: flex;
+   column-gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-post {
+    border: none;
+    background: green;
     color: white;
-    border-radius: 3px;
+    padding: 0.4em 4.2em;
+    border-radius: 20px;
 }
 
 a {
@@ -208,7 +241,9 @@ a {
 }
 
 
-
+.input form input::placeholder, textarea::placeholder {
+    padding-left: 0.5em;
+}
 
 
 
