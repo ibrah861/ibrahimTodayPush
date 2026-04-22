@@ -9,6 +9,7 @@ import Navigation from "./pages/navigation/Navigation";
 import AdminDashBoard from "./pages/AdminDashBoard";
 import Protected from "./pages/protectedRoutes/Protected";
 import MenuNav from "./pages/navigation/MenuNav";
+import Update from "./pages/Update";
 import { stateManager } from "./utility/authContext/Context";
 
 // CSS
@@ -34,9 +35,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
 
           <Route element={<Protected />}>
-            <Route path="/view/:id" element={<View />} />
+            <Route path="/view" element={<View />} />
             <Route path="/create" element={<Create />} />
-            <Route path="/admin/:id" element={<AdminDashBoard />} />
+            <Route path="/update" element={<Update />} />
+            <Route path="/admin" element={<AdminDashBoard />} />
           </Route>
         </Routes>
       </div>

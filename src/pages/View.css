@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     width: 50%;
-    margin: 6rem  auto 0 auto;
+    margin: 1rem  auto 0 auto;
     /* box-shadow: 0px 0px 6px black; */
     border-radius: 16px;
 }
@@ -243,6 +243,23 @@ a {
 
 .input form input::placeholder, textarea::placeholder {
     padding-left: 0.5em;
+}
+
+/* invalied-token */
+.invalied-token {
+    background: red;
+    font-size: larger;
+    color: white;
+    padding: 0.3em 1em;
+    border-radius: 0.3rem;
+}
+
+.token-box {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: fit-content;
+    /* border: 1px solid red; */
 }
 
 

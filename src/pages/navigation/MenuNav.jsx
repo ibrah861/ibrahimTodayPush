@@ -41,7 +41,7 @@ const MenuNav = () => {
             <li>Create</li>
           </Link>
 
-          <Link to="/view/:id">
+          <Link to="/view">
             <li>View</li>
           </Link>
 

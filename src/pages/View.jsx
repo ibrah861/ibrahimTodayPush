@@ -22,6 +22,8 @@ const View = () => {
   const [postDelete, setPostDelete] = useState(false);
   const [deleteing, setDeleting] = useState(false);
   const [userDetails, setUserDetails] = useState(true);
+  const [invalidToken, setInvalidToken] = useState("");
+  const [InvalidBox, setInvalidBox] = useState(false);
 
   // navigate
   const navigate = useNavigate();
@@ -65,6 +67,15 @@ const View = () => {
       setUserDetails(oneUser.data.onePost <= 0);
     } catch (err) {
       console.log(`Problem Occure ${err}`);
+      console.log(err.response.status);
+
+      if (err.response.status === 406) {
+        localStorage.setItem("token", "");
+        navigate("/");
+        setInvalidBox(true);
+      }
+
+      setInvalidToken(err.response.data.msg);
     } finally {
       setLoading(false);
     }
@@ -89,20 +100,17 @@ const View = () => {
 
   const deletePost = async () => {
     setDeleting(true);
+
     try {
-      console.log("loading ...");
       const post = await auth.delete("/delete", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      // if (post.data.isDelete) {
-      //   users();
-      //   console.log("loading ...");
-      // }
-
-      console.log(post.data.isDelete);
+      if (post.data.isDelete) {
+        users();
+      }
 
       setDeleteBox(post.data.isDelete);
     } catch (err) {
@@ -129,128 +137,134 @@ const View = () => {
         {loading ? (
           <div className="spinner">{loading && <Loader />}</div>
         ) : (
-          <div className="user">
-            <>
-              {isLoggedIn ? <Logout /> : null}
-              {userDetails ? (
-                <div className="message-box">
-                  <h2>
-                    Welcome,
-                    <span
-                      style={{
-                        fontSize: "x-large",
-                        display: "block",
-                        textAlign: "center",
-                      }}
-                    >
-                      back
-                    </span>
-                  </h2>
-                  <img src={mark} alt="" className="img-mark" />
-                  <p className="user-details">
-                    <span className="userName">
-                      {userData.length <= 0 ? "Gesture" : userData}
-                    </span>
-                  </p>
-                  <p className="user-details">
-                    Would you like to create blog ?
-                  </p>
-                  <Link to="/create">
-                    <div className="submit">
-                      <span>Create now</span>
-                    </div>
-                  </Link>
-                </div>
-              ) : (
-                <div className="main-view">
-                  {deleteBox && (
-                    <div className="delete-position">
-                      <div className="deleted-post">
-                        {postDelete ? (
-                          <div>
-                            <div className="process">
-                              {deleteing ? (
-                                <p>Processing... </p>
-                              ) : (
-                                <p>Delete sucess</p>
+          <>
+            <div className="token-box">
+              {InvalidBox && <p className="invalied-token">{invalidToken}</p>}
+            </div>
+            <div className="user">
+              <>
+                {userDetails ? (
+                  <div className="message-box">
+                    <h2>
+                      Welcome,
+                      <span
+                        style={{
+                          fontSize: "x-large",
+                          display: "block",
+                          textAlign: "center",
+                        }}
+                      >
+                        back
+                      </span>
+                    </h2>
+                    <img src={mark} alt="" className="img-mark" />
+                    <p className="user-details">
+                      <span className="userName">
+                        {userData.length <= 0 ? "Gesture" : userData}
+                      </span>
+                    </p>
+                    <p className="user-details">
+                      Would you like to create blog ?
+                    </p>
+                    <Link to="/create">
+                      <div className="submit">
+                        <span>Create now</span>
+                      </div>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="main-view">
+                    {deleteBox && (
+                      <div className="delete-position">
+                        <div className="deleted-post">
+                          {postDelete ? (
+                            <div>
+                              <div className="process">
+                                {deleteing ? (
+                                  <p>Processing... </p>
+                                ) : (
+                                  <p>Delete sucess</p>
+                                )}
+                              </div>
+                            </div>
+                          ) : (
+                            <>
+                              {blogData.map(
+                                (index, key) =>
+                                  selectedId === index._id && (
+                                    <div key={index._id}>
+                                      <p>
+                                        Are you sure ? do you want delete "
+                                        {index._id}"
+                                      </p>
+                                    </div>
+                                  ),
                               )}
-                            </div>
-                          </div>
-                        ) : (
-                          <>
-                            {blogData.map(
-                              (index, key) =>
-                                selectedId === index._id && (
-                                  <div key={index._id}>
-                                    <p>
-                                      Are you sure ? do you want delete "
-                                      {index._id}"
-                                    </p>
-                                  </div>
-                                ),
-                            )}
 
-                            <div className="btn-Delete">
-                              <button onClick={cencelDeletePost}>Cancel</button>
-                              <button onClick={confirmDeletePost}>
-                                Delete
-                              </button>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                  {blogData.map((index, key) => (
-                    <div className="posts" key={index._id}>
-                      <div className="img-box">
-                        <img src={index.Image} alt="picture" />
-                      </div>
-
-                      <div className="position-rel">
-                        <div className="blog">
-                          <div
-                            className="deteils-blog"
-                            onClick={() => {
-                              handleDetails(index._id);
-                            }}
-                          >
-                            <span>...</span>
-                          </div>
-
-                          {details === index._id && (
-                            <div className="menu-post">
-                              <ul>
-                                <Link to="/create">
-                                  <li>Create</li>
-                                </Link>
-
-                                <li
-                                  onClick={() => {
-                                    deleteBoxPost(index._id);
-                                  }}
-                                >
+                              <div className="btn-Delete">
+                                <button onClick={cencelDeletePost}>
+                                  Cancel
+                                </button>
+                                <button onClick={confirmDeletePost}>
                                   Delete
-                                </li>
-
-                                <li>Update</li>
-                              </ul>
-                            </div>
+                                </button>
+                              </div>
+                            </>
                           )}
                         </div>
                       </div>
+                    )}
+                    {blogData.map((index, key) => (
+                      <div className="posts" key={index._id}>
+                        <div className="img-box">
+                          <img src={index.Image} alt="picture" />
+                        </div>
 
-                      <h1>{index.title}</h1>
-                      <p className="sub-heading">{index.subtitle}</p>
-                      <div className="contents">
-                        <p>{index.content}</p>
+                        <div className="position-rel">
+                          <div className="blog">
+                            <div
+                              className="deteils-blog"
+                              onClick={() => {
+                                handleDetails(index._id);
+                              }}
+                            >
+                              <span>...</span>
+                            </div>
+
+                            {details === index._id && (
+                              <div className="menu-post">
+                                <ul>
+                                  <Link to="/create">
+                                    <li>Create</li>
+                                  </Link>
+
+                                  <li
+                                    onClick={() => {
+                                      deleteBoxPost(index._id);
+                                    }}
+                                  >
+                                    Delete
+                                  </li>
+
+                                  <li>Update</li>
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        <h1>{index.title}</h1>
+                        <p className="sub-heading">{index.subtitle}</p>
+                        <div className="contents">
+                          <p>{index.content}</p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          </div>
+                    ))}
+                  </div>
+                )}
+              </>
+            </div>
+          </>
         )}
       </div>
     </>

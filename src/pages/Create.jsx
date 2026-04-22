@@ -44,7 +44,7 @@ const Create = () => {
       console.log(err);
     } finally {
       setCreate(false);
-      navigate("/view/:id");
+      navigate("/view");
     }
   };
 

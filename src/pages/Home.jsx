@@ -33,12 +33,11 @@ const Home = () => {
       const submit = await auth.post("/signin", { email, password });
       const data = submit?.data;
       // set Role
-      console.log(data?.role);
 
       if (data?.role === "admin") {
-        navigate("/admin/:id");
+        navigate("/admin");
       } else {
-        navigate("/view/:id");
+        navigate("/view");
       }
 
       setMsgHeader(data?.head);
@@ -150,11 +149,8 @@ const Home = () => {
         //   end
       });
 
-      console.log(userPost.status);
-
       if (userPost.status === 201) {
-        navigate("/view/:id");
-        console.log("ndio");
+        navigate("/view");
       }
     } catch (err) {
       console.log(err);
