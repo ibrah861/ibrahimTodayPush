@@ -92,6 +92,25 @@
   font-weight: 200;
 }
 
+  .signin-user button {
+    border: none;
+    background: green;
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 20px;
+  }
+
+   .signin-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.8em;
+  }
+
+
+
+
+  /* MEDIA QUERY */
 @media (width < 600px) {
   .hero-container {
     display: flex;
@@ -106,20 +125,6 @@
     font-size: 1.8rem;
   }
 
-  .signin-user button {
-    border: none;
-    background: green;
-    color: white;
-    padding: 0.4em 0.8em;
-    border-radius: 20px;
-  }
-
-  .signin-user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 0.8em;
-  }
 
   .heigth-flex {
     height: fit-content;
@@ -129,3 +134,4 @@
     width: 100%;
   }
 }
+

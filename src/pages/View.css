@@ -174,20 +174,19 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:6rem 0 1rem 0;
+    margin:1rem 0 1rem 0;
     width: 100%;
 }
 
-.posts h1 {
-  margin: 1rem 0 2rem 0;
-  font-size: 2.9rem;
+.img-box > img {
+    width: 30rem;
+    box-shadow: 0px 0px 2px gainsboro;
 }
 
-.posts img {
-    width: inherit;
-    max-height: 20rem;
+.posts > p {
+    text-align: center;
 }
-
+ 
 .blog {
   display: flex;
   justify-content: flex-end;
@@ -261,6 +260,11 @@ a {
     height: fit-content;
     /* border: 1px solid red; */
 }
+
+.block {
+    display: block;
+}
+
 
 
 

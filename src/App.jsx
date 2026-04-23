@@ -10,6 +10,7 @@ import AdminDashBoard from "./pages/AdminDashBoard";
 import Protected from "./pages/protectedRoutes/Protected";
 import MenuNav from "./pages/navigation/MenuNav";
 import Update from "./pages/Update";
+import PostDescription from "./pages/PostDescription";
 import { stateManager } from "./utility/authContext/Context";
 
 // CSS
@@ -18,6 +19,7 @@ import "./pages/View.css";
 import "./pages/Admin.css";
 import "./uiComponent/Loader.css";
 import "./pages/navigation/Menu.css";
+import "./pages/PostDescription.css";
 
 import "./pages/authPages/Auth.css";
 import "./pages/index.css";
@@ -37,7 +39,8 @@ const App = () => {
           <Route element={<Protected />}>
             <Route path="/view" element={<View />} />
             <Route path="/create" element={<Create />} />
-            <Route path="/update" element={<Update />} />
+            <Route path="/update/:id" element={<Update />} />
+            <Route path="/postDescription/:id" element={<PostDescription />} />
             <Route path="/admin" element={<AdminDashBoard />} />
           </Route>
         </Routes>

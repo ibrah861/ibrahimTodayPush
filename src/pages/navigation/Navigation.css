@@ -88,6 +88,10 @@ input:focus {
     text-decoration: none;
 }
 
+.menu-tab {
+    display: none;
+}
+
 
 /*  MEDIA QUERY */
 @media (width < 600px) {
@@ -107,4 +111,8 @@ input:focus {
     .button {
     display: none;
 }
+
+.menu-tab {
+    display: block;
+} 
 }

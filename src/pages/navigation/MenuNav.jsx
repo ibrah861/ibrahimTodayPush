@@ -9,12 +9,11 @@ import { stateManager } from "../../utility/authContext/Context";
 
 const MenuNav = () => {
   // logout function
+  const isLoggedIn = !!localStorage.getItem("token");
+
   const logOut = () => {
-    localStorage.setItem("token", "");
-    const isAuther = localStorage.getItem("token");
-    if (isAuther === "" || isAuther === null) {
-      navigate("/");
-    }
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   const { setMenuNav } = useContext(stateManager);
@@ -37,19 +36,19 @@ const MenuNav = () => {
             <li>Home</li>
           </Link>
 
-          <Link to="/create">
-            <li>Create</li>
-          </Link>
+          {isLoggedIn && (
+            <div>
+              <Link to="/create">
+                <li>Create</li>
+              </Link>
 
-          <Link to="/view">
-            <li>View</li>
-          </Link>
+              <Link to="/view">
+                <li>View</li>
+              </Link>
 
-          <Link>
-            <li>Update</li>
-          </Link>
-
-          <li onClick={logOut}>LogOut</li>
+              <li onClick={logOut}>LogOut</li>
+            </div>
+          )}
         </ul>
       </nav>
     </div>

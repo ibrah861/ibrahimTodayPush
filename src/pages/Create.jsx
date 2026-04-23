@@ -2,8 +2,10 @@ import { useState } from "react";
 import auth from "../utility/axios/AxiosApi";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../uiComponent/Loader";
+import { useParams } from "react-router-dom";
 
 const Create = () => {
+  const { id } = useParams();
   // state
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");

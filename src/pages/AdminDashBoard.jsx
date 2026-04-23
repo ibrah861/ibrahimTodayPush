@@ -26,13 +26,13 @@ const AdminDashBoard = () => {
         const token = localStorage.getItem("token");
 
         // data is fetching ...
-        const adminData = await auth.get("/users", {
+        const adminData = await auth.get("/alluser", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        const userData = await auth.get("/user", {
+        const userData = await auth.get("/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

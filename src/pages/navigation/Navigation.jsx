@@ -6,16 +6,14 @@ import Menu from "./Menu";
 import siteLogo from "../../assets/icon/siteLogo.png";
 
 const Navigation = () => {
-  const [auth, setAuth] = useState(true);
   const navigate = useNavigate();
 
-  // logout function
+  // logout functionconst
+  const isLoggedIn = !!localStorage.getItem("token");
   const logOut = () => {
-    localStorage.setItem("token", "");
-    const isAuther = localStorage.getItem("token");
-    if (isAuther === "" || isAuther === null) {
+    if (true) {
       navigate("/");
-      setAuth(false);
+      localStorage.removeItem("token");
     }
   };
 
@@ -32,18 +30,21 @@ const Navigation = () => {
           </ul>
         </div>
         <ul className="nav-list break-none">
-          <Link>
-            <li className="account">Account</li>
-          </Link>
+          {isLoggedIn && (
+            <Link to="/create">
+              <li className="account">Create</li>
+            </Link>
+          )}
 
-          {auth && (
+          {isLoggedIn && (
             <button onClick={logOut} className="bg-boader button">
               Logout
             </button>
           )}
         </ul>
-
-        <Menu />
+        <div className="menu-tab">
+          <Menu />
+        </div>
       </div>
     </>
   );

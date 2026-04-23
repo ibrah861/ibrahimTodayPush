@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../utility/axios/AxiosApi";
 import Loader from "../uiComponent/Loader";
+import { useParams } from "react-router-dom";
 // import { useContext } from "react";
 // import world from "../assets/icon/images.jpg";
 
@@ -19,6 +20,8 @@ const Home = () => {
   const navigate = useNavigate();
   const [pswState, setPswState] = useState(true);
   const [formChoice, setFormChoice] = useState(false);
+
+  const { id } = useParams();
 
   // use context
 
@@ -140,7 +143,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const userPost = await auth.get("/user", {
+      const userPost = await auth.get("/me", {
         // jwt header bearer tokens
         headers: {
           Authorization: `Bearer ${token}`,

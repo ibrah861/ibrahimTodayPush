@@ -1,7 +1,7 @@
 import audit from "../assets/img/audit.jpeg";
 
 // DEPENDECE
-import { useContext, useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import Loader from "../uiComponent/Loader";
 import auth from "../utility/axios/AxiosApi";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import mark from "../assets/icon/mark.png";
 import Logout from "../uiComponent/Logout";
 import { stateManager } from "../utility/authContext/Context";
+import { useParams } from "react-router-dom";
 
 // import Axios api
 
@@ -24,6 +25,14 @@ const View = () => {
   const [userDetails, setUserDetails] = useState(true);
   const [invalidToken, setInvalidToken] = useState("");
   const [InvalidBox, setInvalidBox] = useState(false);
+  const [update, setUpdate] = useState(null);
+
+  // other states
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+
+  // useParams
+  const { id } = useParams();
 
   // navigate
   const navigate = useNavigate();
@@ -40,7 +49,7 @@ const View = () => {
     //   try block and catch error
     setLoading(true);
     try {
-      const userPost = await auth.get("/user", {
+      const userPost = await auth.get("/me", {
         // jwt header bearer tokens
         headers: {
           Authorization: `Bearer ${token}`,
@@ -49,9 +58,12 @@ const View = () => {
         //   end
       });
 
-      setUserData(userPost.data.user.fullname);
+      const allUserInfo = userPost.data.user;
 
-      const oneUser = await auth.get("/postuser", {
+      setFullname(allUserInfo.fullname);
+      setEmail(allUserInfo.email);
+
+      const oneUser = await auth.get(`/post`, {
         // jwt header bearer tokens
         headers: {
           Authorization: `Bearer ${token}`,
@@ -60,22 +72,20 @@ const View = () => {
         //   end
       });
 
-      setBlogData(oneUser.data.onePost);
+      setBlogData(oneUser.data.getBlog);
 
-      console.log(oneUser.data.onePost);
-
-      setUserDetails(oneUser.data.onePost <= 0);
+      setUserDetails(oneUser.data.getBlog <= 0);
     } catch (err) {
       console.log(`Problem Occure ${err}`);
-      console.log(err.response.status);
+      // console.log(err.response.status);
 
-      if (err.response.status === 406) {
-        localStorage.setItem("token", "");
-        navigate("/");
-        setInvalidBox(true);
-      }
+      // if (err.response.status === 406) {
+      //   localStorage.setItem("token", "");
+      //   navigate("/");
+      //   setInvalidBox(true);
+      // }
 
-      setInvalidToken(err.response.data.msg);
+      // setInvalidToken(err.response.data.msg);
     } finally {
       setLoading(false);
     }
@@ -98,6 +108,9 @@ const View = () => {
     setDetails((prev) => (prev === id ? null : id));
   };
 
+  const handleUpdate = (id) => {
+    setUpdate(id);
+  };
   const deletePost = async () => {
     setDeleting(true);
 
@@ -126,9 +139,17 @@ const View = () => {
     }
   };
 
-  const confirmDeletePost = () => {
-    setPostDelete(true);
-    deletePost();
+  const getImageId = (id) => {
+    navigate(`/postDescription/${id}`);
+  };
+
+  // const confirmDeletePost = () => {
+  //   setPostDelete(true);
+  //   deletePost();
+  // };
+
+  const create = () => {
+    navigate("/create");
   };
 
   return (
@@ -159,105 +180,34 @@ const View = () => {
                     </h2>
                     <img src={mark} alt="" className="img-mark" />
                     <p className="user-details">
-                      <span className="userName">
-                        {userData.length <= 0 ? "Gesture" : userData}
-                      </span>
+                      <span className="userName block">{fullname}</span>
+
+                      <span className="block">{email}</span>
                     </p>
+
                     <p className="user-details">
                       Would you like to create blog ?
                     </p>
-                    <Link to="/create">
-                      <div className="submit">
-                        <span>Create now</span>
-                      </div>
-                    </Link>
+
+                    <div className="submit" onClick={create}>
+                      <span>Create now</span>
+                    </div>
                   </div>
                 ) : (
                   <div className="main-view">
-                    {deleteBox && (
-                      <div className="delete-position">
-                        <div className="deleted-post">
-                          {postDelete ? (
-                            <div>
-                              <div className="process">
-                                {deleteing ? (
-                                  <p>Processing... </p>
-                                ) : (
-                                  <p>Delete sucess</p>
-                                )}
-                              </div>
-                            </div>
-                          ) : (
-                            <>
-                              {blogData.map(
-                                (index, key) =>
-                                  selectedId === index._id && (
-                                    <div key={index._id}>
-                                      <p>
-                                        Are you sure ? do you want delete "
-                                        {index._id}"
-                                      </p>
-                                    </div>
-                                  ),
-                              )}
-
-                              <div className="btn-Delete">
-                                <button onClick={cencelDeletePost}>
-                                  Cancel
-                                </button>
-                                <button onClick={confirmDeletePost}>
-                                  Delete
-                                </button>
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    )}
                     {blogData.map((index, key) => (
-                      <div className="posts" key={index._id}>
+                      <div
+                        className="posts"
+                        key={index._id}
+                        onClick={() => {
+                          getImageId(index._id);
+                        }}
+                      >
                         <div className="img-box">
                           <img src={index.Image} alt="picture" />
                         </div>
 
-                        <div className="position-rel">
-                          <div className="blog">
-                            <div
-                              className="deteils-blog"
-                              onClick={() => {
-                                handleDetails(index._id);
-                              }}
-                            >
-                              <span>...</span>
-                            </div>
-
-                            {details === index._id && (
-                              <div className="menu-post">
-                                <ul>
-                                  <Link to="/create">
-                                    <li>Create</li>
-                                  </Link>
-
-                                  <li
-                                    onClick={() => {
-                                      deleteBoxPost(index._id);
-                                    }}
-                                  >
-                                    Delete
-                                  </li>
-
-                                  <li>Update</li>
-                                </ul>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-
-                        <h1>{index.title}</h1>
                         <p className="sub-heading">{index.subtitle}</p>
-                        <div className="contents">
-                          <p>{index.content}</p>
-                        </div>
                       </div>
                     ))}
                   </div>

@@ -1,0 +1,126 @@
+.title-post {
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-size: x-large;
+}
+
+.padding-post {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.padding-post > p {
+    text-align: center;
+}
+
+.sub-post {
+    padding: 0.6em 0 1rem 0;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+.img-image {
+    
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.img-image > img {
+    width: inherit;
+    width: 30rem;
+}
+
+.content-post {
+    text-align: justify;
+}
+
+.post-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.9rem 0;
+    margin-bottom: 2em;
+    background: green;
+}
+
+.post-button > button {
+    padding: 0.2em 0.9em;
+    border: none;
+}
+.post-button > button:nth-child(2) {
+    background: red;
+    color: white;
+}
+
+/* delete-confim */
+.delete-confirm {
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px black;
+    padding: 0.8rem 1.3rem;
+    width: 19rem;
+    height: 8rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    z-index: 1;
+    background: white;
+    right: 0.4rem;
+    top:6rem;
+}
+
+.delete-confirm > p {
+    text-align: center;
+   
+}
+
+.sure {
+    font-weight: 500;
+}
+
+.done {
+     margin-top: 1rem;
+     display: flex;
+     column-gap: 0.8rem;
+     justify-content: space-around;
+}
+
+.done > button {
+    border: none;
+    padding: 0.2rem 0.7rem;
+}
+
+.done > button:nth-child(1) {
+    background: red;
+    color: white;
+}
+
+.done > button:nth-child(2) {
+    box-shadow: 0px 0px 3px black;
+}
+
+.undo-delete {
+    box-shadow: 0px 0px 2px black;
+    background: white;
+    border: none;
+    padding: 0.2rem 0.7rem;
+    margin-top:0.8rem ;
+    
+}
+
+.timer-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.timer-delete > p {
+    text-align: center;
+    font-weight: 400;
+}
