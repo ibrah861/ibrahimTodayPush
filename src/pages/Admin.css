@@ -13,9 +13,7 @@
 .top-admin-head {
    margin: 2.4rem 0;
    padding-top: 2rem;
-   }
-
-   
+   } 
 
 .right-col {
     grid-area: "right";

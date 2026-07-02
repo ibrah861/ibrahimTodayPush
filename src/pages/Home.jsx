@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../utility/axios/AxiosApi";
 import Loader from "../uiComponent/Loader";
 import { useParams } from "react-router-dom";
+import girls from "../assets/img/images.jpg"
 // import { useContext } from "react";
 // import world from "../assets/icon/images.jpg";
 
@@ -181,7 +182,7 @@ const Home = () => {
         <div className="hero">
           <div className="flex-head">
             <div className="heigth-flex">
-              <h1>Enjoy posting blog using our website</h1>
+              <h1>Welcome on blog post</h1>
               <p>
                 Now you can create post and update it also delete it easy Signin
                 to create account and then enjoy our services free
@@ -189,17 +190,22 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div className="images">
+          <img src={girls} alt="girls wit phone" className="girlsWithPhone" />
+        </div>
         <div className="form-container-hero">
           <div className="conteiner-choice">
-            <p onClick={register}>Register</p>
-            <p onClick={signup}>Sing-up</p>
+            <ul>
+               <li onClick={register}>Join</li>
+            <li onClick={signup}>Sign up</li>
+            </ul>
           </div>
 
           {formChoice ? (
             <div className=" signin">
               <div className="auth-container">
                 <div className="container">
-                  <h2>Register</h2>
+                  <h2>Sign in</h2>
 
                   {box && (
                     <div className="messageBox">
@@ -215,7 +221,7 @@ const Home = () => {
                       <label htmlFor="email">Email address</label>
                       <input
                         type="email"
-                        placeholder="enter your email"
+                        placeholder="ibra1980@gmail.com"
                         value={email}
                         id="email"
                         required
@@ -227,7 +233,7 @@ const Home = () => {
                       <label htmlFor="password">Password</label>
                       <input
                         type={pswState ? "password" : "text"}
-                        placeholder="enter your password"
+                        placeholder="* * * * * * * * * "
                         value={password}
                         id="password"
                         required
@@ -307,7 +313,7 @@ const Home = () => {
 
                     <div className="flex-btn">
                       <div className="signin-user">
-                        {isLoading && <Loader />}
+                        {isLoading &&  <Loader />}
                         <button>
                           {isLoading ? "Authenticating ..." : " Sign up"}
                         </button>

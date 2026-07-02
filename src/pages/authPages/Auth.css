@@ -7,6 +7,7 @@
    
 }
 
+
 .submit button {
     color: white;
     background: transparent;
@@ -82,8 +83,8 @@
     width: fit-content;
     background: white;
     color: black;
-    box-shadow: 0px 0px 4px blue;
 }
+
 
 .container h2 {
     margin: 0.7rem;
