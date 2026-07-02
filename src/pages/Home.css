@@ -1,6 +1,7 @@
 .hero-container {
   display: flex;
-  width: 80%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .hero {
@@ -79,7 +80,8 @@
 }
 
 .heigth-flex {
-  width: 80%;
+  /* width: 80%;
+  margin: 0 auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
